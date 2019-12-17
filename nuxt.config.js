@@ -28,6 +28,10 @@ export default {
     ]
   },
   extensions: ['ts', 'js'],
+
+  workbox: {
+    importScripts: ['sw.js']
+  },
   /*
   ** Customize the progress-bar color
   */
@@ -69,6 +73,7 @@ export default {
   modules: [
     '@nuxtjs/dotenv',
     '@nuxtjs/markdownit',
+    '@nuxtjs/pwa'
   ],
 
   /*

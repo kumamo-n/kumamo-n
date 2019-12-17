@@ -20,7 +20,7 @@ export default Vue.extend({
     computed: {
         publishedAt(): string {
             if ((this as any).date) {
-                return dayjs((this as any).date).format('MMM D, YYYY')
+                return dayjs(this.date).format('MMM D, YYYY')
             }
             return ''
         },

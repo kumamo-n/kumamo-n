@@ -11,6 +11,7 @@
 import Vue from 'vue'
 const PostList = () => import('@/components/PostList/PostList.vue')
 import {ContentfulRepository} from "@/repository/contentful";
+import {PostEntity} from "@/types/Post";
 export default Vue.extend({
     name: "Search",
     components:{

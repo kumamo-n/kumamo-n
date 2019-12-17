@@ -8,7 +8,7 @@
 
     <div class="post-head">
 
-      <Date :date="[presenter.props.publishedAt ? presenter.props.publishedAt: '']"/>
+      <Date :date="presenter.props.publishedAt" />
       <ShareButton :path="pagePath" :title="presenter.props.title"/>
     </div>
 
@@ -44,7 +44,7 @@ export default Vue.extend({
       TagList
   },
   computed:{
-      presenter() : PostEntity | null {
+      presenter() :PostEntity | null {
           return new ContentfulRepository(this.$store).getCurrentPost()
       },
       pagePath():string {

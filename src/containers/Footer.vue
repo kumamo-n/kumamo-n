@@ -1,20 +1,19 @@
 <template>
-  <footer>
+  <div class="footer">
     <div class="footer-wrap">
       <div class="copy-right">Copyright © 2019 kumamo-n</div>
     </div>
-  </footer>
-
+  </div>
 </template>
 <script>
 import Vue from 'vue'
 export default Vue.extend({
-  name: "footer"
+  name: "Footer"
 })
 </script>
 
 <style scoped lang="scss">
-  footer {
+  .footer {
     height: 400px;
     width: 100%;
     background:#f8f9fa ;

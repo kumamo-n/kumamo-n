@@ -19,7 +19,7 @@ export default Vue.extend({
     },
     props: {
       data:{
-          type: Object as () => PostEntity,
+          type: Array as () => PostEntity[],
           required: true as true
       }
     },
