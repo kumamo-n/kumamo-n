@@ -57,8 +57,4 @@ workflows:
   version: 2
   standard-workflow:
     jobs:
-      deploy:
-        filter:
-          branches:
-            only:
-              - master
+      - deploy
