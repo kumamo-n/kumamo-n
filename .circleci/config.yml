@@ -14,6 +14,8 @@ jobs:
       - checkout
       - run: apk add --no-cache nodejs npm yarn
       - run: yarn
+      - run: echo $CTF_SPACE_ID | base64 -d > .env
+      - run: echo $CTF_ACCESS_TOKEN | base64 -d > .env
       - run: yarn build
       - run: echo $GCLOUD_SERVICE_KEY > ./secret.json
       - run: gcloud auth activate-service-account --key-file=./secret.json
