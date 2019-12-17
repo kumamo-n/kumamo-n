@@ -1,61 +1,29 @@
 version: 2
-
 jobs:
-  test:
+  build:
+    working_directory: ~/app
     docker:
-      - image: node:10.13.0
-    working_directory: /repo
+      - image: circleci/node:8.10.0
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
-      - run:
-          name: Install dependencies
-          command: yarn install --pure-lockfile
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
-      - run:
-          name: Lint
-          command: yarn run lint
-      - run:
-          name: Build
-          command: yarn run build
-      - persist_to_workspace:
-          root: /repo
-          paths:
-            - ./node_modules
-            - ./.nuxt
-
   deploy:
+    working_directory: ~/app
     docker:
-      - image: google/cloud-sdk:alpine
-    working_directory: /repo
+      - image: google/cloud-sdk:217.0.0-alpine
     steps:
       - checkout
-      - attach_workspace:
-          at: /repo
-      - run:
-          name: Decode credential
-          command: |
-            echo $GCLOUD_SERVICE_KEY | base64 -d > ./secret.json
-            echo $SECRET_YAML | base64 -d > ./secret.yaml
-      - run:
-          name: Deploy
-          command: |
-            gcloud auth activate-service-account --key-file=./secret.json
-            gcloud --quiet config set project $GOOGLE_PROJECT_ID
-            GOOGLE_APPLICATION_CREDENTIALS=./secret.json gcloud app deploy --quiet
-      - run:
-          name: Clean up
-          command: rm ./secret.json
-
+      - run: apk add --no-cache nodejs npm yarn
+      - run: yarn
+      - run: yarn build
+      - run: echo $GCLOUD_SERVICE_KEY > ./secret.json
+      - run: gcloud auth activate-service-account --key-file=./secret.json
+      - run: gcloud app deploy --quiet --project My First Project
 
 workflows:
   version: 2
-  standard-workflow:
+  main:
     jobs:
-      - deploy
+      - deploy:
+          filters:
+            branches:
+              only: master
