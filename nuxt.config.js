@@ -17,6 +17,10 @@ export default {
   */
 
   head: {
+    htmlAttrs: {
+      prefix: 'og: http://ogp.me/ns#',
+      lang: 'en'
+    },
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
@@ -29,9 +33,6 @@ export default {
   },
   extensions: ['ts', 'js'],
 
-  workbox: {
-    importScripts: ['sw.js']
-  },
   /*
   ** Customize the progress-bar color
   */
