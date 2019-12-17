@@ -17,7 +17,7 @@ jobs:
       - run: yarn build
       - run: echo $GCLOUD_SERVICE_KEY > ./secret.json
       - run: gcloud auth activate-service-account --key-file=./secret.json
-      - run: gcloud app deploy --quiet --project My First Project
+      - run: gcloud app deploy --quiet --project fluid-house-244205
 
 workflows:
   version: 2
