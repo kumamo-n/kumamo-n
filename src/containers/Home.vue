@@ -13,7 +13,7 @@ export default Vue.extend({
         PostList
     },
     computed:{
-        presenter(){
+        presenter(): PostEntity[]{
             return new ContentfulRepository(this.$store).getLatestPosts()
         }
     }

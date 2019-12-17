@@ -8,7 +8,7 @@
 
     <div class="post-head">
 
-      <Date :date="presenter.props.publishedAt" />
+      <Date :date="presenter.props.publishedAt ? presenter.props.publishedAt: ''"/>
       <ShareButton :path="pagePath" :title="presenter.props.title"/>
     </div>
 
@@ -34,6 +34,7 @@ const MarkDown = () => import('@/components/Post/MarkDown.vue')
 const Date = () => import('@/components/Post/Date.vue')
 const TagList = () => import('@/components/Post/TagList.vue')
 const ShareButton = () => import('@/components/Post/ShareButtons.vue')
+
 
 export default Vue.extend({
   name: "Post",

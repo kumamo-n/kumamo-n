@@ -33,36 +33,36 @@ export class ContentfulRepository {
     }
 
     async saveLatestPosts() {
-        const getPosts = await this.client.getEntries<IPost>({
-            content_type: 'post',
-        })
+        try {
+            const getPosts = await this.client.getEntries<IPost>({content_type: 'post',})
+            const posts = getPosts.items.map(this.transform)
+            const slug = posts.map( post => post.slug)
 
-        const posts = getPosts.items.map(this.transform)
-        const slug = posts.map( post => post.slug)
-
-        this.savePosts(posts)
-        this.store.commit(new StoreLatestPosts(slug))
+            this.savePosts(posts)
+            this.store.commit(new StoreLatestPosts(slug))
+        } catch (e) {
+            throw Error(e)
+        }
     }
 
 
-    //@todo ここの配列完全に理解しようね
     getLatestPosts():PostEntity[] {
         const posts = this.store.state.post.latestPost
         const postList = posts.map(post => this.store.state.post.byIds[post])
         return postList.map((post => new PostEntity(post)))
-
     }
 
 
     async saveCurrentPost(slug?:string) {
-        const getPosts = await this.client.getEntries<IPost>({
-            content_type: 'post',
-            'fields.slug': slug
-        })
+        try {
+            const getPosts = await this.client.getEntries<IPost>({content_type: 'post', 'fields.slug': slug})
+            const post = this.transform(getPosts.items[0])
 
-        const post = this.transform(getPosts.items[0])
-        this.savePosts([post])
-        this.store.commit(new StoreCurrentPost(post.slug))
+            this.savePosts([post])
+            this.store.commit(new StoreCurrentPost(post.slug))
+        } catch (e) {
+            throw Error(e)
+        }
     }
 
     getCurrentPost() :PostEntity | null {
@@ -74,14 +74,16 @@ export class ContentfulRepository {
     }
 
     async saveSearchPosts(query:any) {
-        const getPosts = await this.client.getEntries<IPost>({
-            query
-        })
+        try {
+            const getPosts = await this.client.getEntries<IPost>({query})
+            const posts = getPosts.items.filter(post => post.fields.publishedAt).map(this.transform)
 
-        const posts = getPosts.items.filter(post => post.fields.publishedAt).map(this.transform)
-        const slug = posts.map(post => post.slug)
-        this.savePosts(posts)
-        this.store.commit(new StoreSearchPosts(slug))
+            const slug = posts.map(post => post.slug)
+            this.savePosts(posts)
+            this.store.commit(new StoreSearchPosts(slug))
+        } catch (e) {
+            throw Error(e)
+        }
     }
 
 
@@ -101,16 +103,18 @@ export class ContentfulRepository {
 
 
     async tagsPosts(tag:string) {
-
-       const posts = await this.client.getEntries<IPost>({
-           content_type: 'post',
-           'fields.tags.sys.id': tag,
-       })
-
-        const value = posts.items.map(this.transform)
-        const slug = value.map(post => post.slug)
-        this.savePosts(value)
-        this.store.commit(new StoreTagsPosts(slug))
+        try {
+            const posts = await this.client.getEntries<IPost>({
+                content_type: 'post',
+                'fields.tags.sys.id': tag,
+            })
+            const value = posts.items.map(this.transform)
+            const slug = value.map(post => post.slug)
+            this.savePosts(value)
+            this.store.commit(new StoreTagsPosts(slug))
+        } catch (e) {
+            throw Error(e)
+        }
 
    }
 

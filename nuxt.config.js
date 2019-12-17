@@ -44,7 +44,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/contentful'
+    '~/plugins/contentful',
+    { src: '~/plugins/vue-lazyload', ssr: false },
   ],
   markdownit: {
     injected: true,
