@@ -3,7 +3,7 @@
     <div class="thumb-wrap">
       <picture>
         <source :srcset="post.post.props.image.fields.file.url" type="image/webp" />
-        <img :src="post.post.props.image.fields.file.url">
+        <img :src="post.post.props.image.fields.file.url" :alt="post.post.props.image.fields.file.fileName">
       </picture>
     </div>
 

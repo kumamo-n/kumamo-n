@@ -13,7 +13,7 @@
     </div>
 
     <div class="heading-img">
-      <img :src="presenter.props.image.fields.file.url">
+      <img :src="presenter.props.image.fields.file.url" :alt="presenter.props.image.fields.file.fileName">
     </div>
 
 

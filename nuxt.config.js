@@ -44,7 +44,6 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/contentful',
     { src: '~/plugins/vue-lazyload', ssr: false },
   ],
   markdownit: {
@@ -74,7 +73,6 @@ export default {
   modules: [
     '@nuxtjs/dotenv',
     '@nuxtjs/markdownit',
-    '@nuxtjs/pwa'
   ],
 
   /*
