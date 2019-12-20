@@ -46,6 +46,7 @@ export default Vue.extend({
     transition: all .6s ease;
     border-width: 0;
     background: none;
+    padding:10px 0px 10px 20px;
   }
   input:focus {
     outline: none;
