@@ -46,7 +46,6 @@ export default Vue.extend({
     transition: all .6s ease;
     border-width: 0;
     background: none;
-    padding:10px 0px 10px 20px;
   }
   input:focus {
     outline: none;
@@ -56,6 +55,8 @@ export default Vue.extend({
 
   button {
     padding-left:10px;
+    width:36px;
+    height: 36px;
     border: none;
     background: transparent;
     top: 10px;
