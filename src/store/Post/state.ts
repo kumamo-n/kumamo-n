@@ -1,4 +1,4 @@
-import { IPost} from "../../types/Post";
+import { IPost } from "@/types/Post";
 
 export interface IPostState {
     byIds: {

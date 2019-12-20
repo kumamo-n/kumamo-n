@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <Header />
-    <div id="wrap">
+    <main id="wrap">
       <nuxt />
-    </div>
+    </main>
     <Footer/>
   </div>
 </template>

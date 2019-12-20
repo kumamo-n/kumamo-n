@@ -5,7 +5,6 @@
 <script lang="ts">
   import Vue from 'vue'
   import {ContentfulRepository} from "@/repository/contentful";
-
   const Home = () => import("@/containers/Home.vue")
   export default Vue.extend({
     components: {
