@@ -47,11 +47,6 @@ export default Vue.extend({
     border-width: 0;
     background: none;
   }
-  input:focus {
-    outline: none;
-    padding:10px 0px 10px 20px;
-    box-sizing: border-box;
-  }
 
   button {
     padding-left:10px;
