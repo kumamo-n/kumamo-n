@@ -12,9 +12,6 @@
       <ShareButton :path="pagePath" :title="presenter.props.title"/>
     </div>
 
-    <div class="heading-img">
-      <img :src="presenter.props.image.fields.file.url" :alt="presenter.props.image.fields.file.fileName">
-    </div>
 
 
     <div class="content">
