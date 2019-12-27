@@ -7,12 +7,12 @@
         <use xlink:href="/hatena.svg#root" />
       </svg>
     </a>
-    <a :href="`http://twitter.com/share?url=${this.pagePath}&text=${this.title}`" class='socialButton' target="_blank">
+    <a :href="`http://twitter.com/share?url=${this.pagePath}&text=${this.title}`" class='socialButton' target="_blank" rel="noopener">
       <svg width="20px" height="40px"viewBox="0 0 20 16">
         <use xlink:href="/twitter.svg#root" />
       </svg>
     </a>
-    <a :href="`http://getpocket.com/edit?url=${this.pagePath}`" class='socialButton' target="_blank">
+    <a :href="`http://getpocket.com/edit?url=${this.pagePath}`" class='socialButton' target="_blank" rel="noopener">
       <svg width="20px" height="40px" viewBox="0 0 20 16">
         <use xlink:href="/pocket.svg#root" />
       </svg>
