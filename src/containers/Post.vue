@@ -50,7 +50,7 @@ export default Vue.extend({
           return new ContentfulRepository(this.$store).getCurrentPost()
       },
       pagePath():string {
-          const basePath = 'localhost:3000'
+          const basePath = 'kumamo-n.com'
           return basePath + this.$route.fullPath
       }
   },
@@ -64,7 +64,7 @@ export default Vue.extend({
                 { hid: 'og:description', property: 'og:description', content: post ? post.content : '' },
                 { hid: 'og:title', property: 'og:title', content: post ? post.title : '' },
                 { hid: 'og:image', property: 'og:image', content: post ? `https:${post.image.fields.file.url}` : '' },
-                { hid: 'og:url', property: 'og:url', content: `http:localhost/posts/${post ? post.slug : ''}` }
+                { hid: 'og:url', property: 'og:url', content: `http:kumamo-n.com/posts/${post ? post.slug : ''}` }
             ]
         }
     },
