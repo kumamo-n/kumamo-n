@@ -54,22 +54,20 @@ export default Vue.extend({
             return basePath + this.$route.fullPath
         }
     },
-    methods: {
-        head() {
-            const post = (this as any).presenter.props
-            return {
-                title: `${post? post.title : ''} | kuma-blog`,
-                meta: [
-                    { hid: 'description', name: 'description', content: post ? post.content : '' },
-                    { hid: 'og:type', property: 'og:type', content: 'article' },
-                    { hid: 'og:description', property: 'og:description', content: post ? post.content : '' },
-                    { hid: 'og:title', property: 'og:title', content: post ? post.title : '' },
-                    { hid: 'og:image', property: 'og:image', content: post ? `https:${post.image.fields.file.url}` : '' },
-                    { hid: 'og:url', property: 'og:url', content: `http:kumamo-n.com/posts/${post ? post.slug : ''}` }
-                ]
-            }
-        },
-    }
+    head() {
+        const post = (this as any).presenter.props
+        return {
+            title: `${post? post.title : ''} | kuma-blog`,
+            meta: [
+                { hid: 'description', name: 'description', content: post ? post.content : '' },
+                { hid: 'og:type', property: 'og:type', content: 'article' },
+                { hid: 'og:description', property: 'og:description', content: post ? post.content : '' },
+                { hid: 'og:title', property: 'og:title', content: post ? post.title : '' },
+                { hid: 'og:image', property: 'og:image', content: post ? `https:${post.image.fields.file.url}` : '' },
+                { hid: 'og:url', property: 'og:url', content: `http:kumamo-n.com/posts/${post ? post.slug : ''}` }
+            ]
+        }
+    },
 })
 </script>
 
