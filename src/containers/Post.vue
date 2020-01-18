@@ -67,7 +67,7 @@ export default Vue.extend({
             ]
         }
     },
-})g
+})
 </script>
 
 <style scoped lang="scss">
