@@ -50,7 +50,7 @@ export default Vue.extend({
             return new ContentfulRepository(this.$store).getCurrentPost()
         },
         pagePath():string {
-            const basePath = 'kumamo-n.com'
+            const basePath = 'https://kumamo-n.com'
             return basePath + this.$route.fullPath
         }
     },
