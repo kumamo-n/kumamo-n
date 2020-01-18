@@ -53,6 +53,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
+
   .thumb-wrap {
     position:relative;
   img {
@@ -93,6 +94,7 @@ export default Vue.extend({
       font-size:1rem;
       margin-right: 5px;
       color: #37474F;
+      background: transparent;
     }
     button:hover{
       cursor: pointer;
