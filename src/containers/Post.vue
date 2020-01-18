@@ -13,7 +13,7 @@
     </div>
 
     <picture class="heading-img">
-      <source :srcset="presenter.props.image.fields.file.url" type="image/webp" />
+      <source :srcset="presenter.props.webp.fields.file.url" type="image/webp" />
       <img :src="presenter.props.image.fields.file.url" :alt="presenter.props.image.fields.file.fileName">
     </picture>
 

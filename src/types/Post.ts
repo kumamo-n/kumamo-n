@@ -5,6 +5,7 @@ export interface IPost {
     id:string
     title:string
     contents:string
+    webp: Asset
     image: Asset
     tags:string[]
     publishedAt:string
