@@ -64,7 +64,7 @@ export default Vue.extend({
                 { hid: 'og:description', property: 'og:description', content: post ? post.contents : '' },
                 { hid: 'og:title', property: 'og:title', content: post ? post.title : '' },
                 { hid: 'og:image', property: 'og:image', content: post ? `https:${post.image.fields.file.url}` : '' },
-                { hid: 'og:url', property: 'og:url', content: `https://kumamo-n.com/posts/${post ? post.slug : ''}` }
+                { hid: 'og:url', property: 'og:url', content: `https://heykumamo-n.com/posts/${post ? post.slug : ''}` }
             ]
         }
     },
