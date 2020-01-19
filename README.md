@@ -1,4 +1,4 @@
-# kuma-blog
+# kumamo-n
 
 > My legendary Nuxt.js project
 

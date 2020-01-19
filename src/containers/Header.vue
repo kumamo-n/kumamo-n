@@ -2,7 +2,7 @@
     <header class=header>
       <div class="headerWrap">
         <nuxt-link to="/" class="title">
-          kuma-blog
+          kumamo-n
         </nuxt-link>
         <div class="search">
           <SearchForm/>
@@ -27,6 +27,12 @@ export default Vue.extend({
     width: 100%;
     margin-bottom: 3rem;
     box-shadow: 2px 2px 15px -12px #000;
+    background: #ffffff;
+    position: fixed;
+    top: 0;
+    will-change: transform;
+    transition: transform 200ms linear;
+    z-index: 99;
   }
   .headerWrap {
     width: 80%;

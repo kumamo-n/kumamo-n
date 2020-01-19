@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Header />
+    <Header  :class="{ 'shrink':!headerHide}"  />
+    {{this.headerHide}}
     <main id="wrap">
       <nuxt />
     </main>
@@ -10,13 +11,34 @@
 
 <script>
 import Vue from 'vue'
+import { scroll } from "@/lib/scroller";
 const Header = () => import('../containers/Header')
 const Footer = () => import('../containers/Footer')
 export default Vue.extend({
   components: {
     Footer,
     Header
-  }
+  },
+  data() {
+    return {
+      headerHide: true
+    }
+  },
+  mounted() {
+    if (window) {
+      window.addEventListener('scroll', this.scrollEvent)
+    }
+  },
+  methods: {
+    scrollEvent() {
+      const test = scroll(document.scrollingElement,700)
+      if (test)  {
+        this.headerHide = false
+      } else {
+        this.headerHide = true
+      }
+    }
+  },
 })
 </script>
 
@@ -68,5 +90,17 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+  #wrap {
+    margin-top:140px ;
+  }
+  .shrink {
+    transform: translateY(-100%);
+  }
+@media screen and (max-width: 768px) {
+  #wrap {
+    margin-top:100px ;
+  }
 }
 </style>

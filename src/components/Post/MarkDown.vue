@@ -35,7 +35,7 @@ export default Vue.extend({
         h1 {
             color:#202124;
             margin:30px 0;
-            font-size: 2rem;
+            font-size: 1.6rem;
             border-left: 4px solid #202124;
             padding-left: 14px;
         }
@@ -44,13 +44,13 @@ export default Vue.extend({
             font-style: normal;
             font-weight: 300;
             line-height: 40px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
         ul {
             color: #202124;
             list-style:disc;
             padding-left:40px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin:20px 0;
         }
         li {
@@ -62,7 +62,7 @@ export default Vue.extend({
         .markdown {
             h1 {
                 margin:15px 0;
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
             p {
                 line-height: 25px;

@@ -68,7 +68,6 @@ export default Vue.extend({
   @media screen and (max-width: 768px) {
     input:focus {
       outline: none;
-      padding:5px 0px 5px 10px;
       box-sizing: border-box;
     }
   }

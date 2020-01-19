@@ -8,7 +8,6 @@
 
     <div class="post-head">
       <Date :date="presenter.props.publishedAt ? presenter.props.publishedAt: ''"/>
-      <ShareButton :path="pagePath" :title="presenter.props.title"/>
     </div>
 
     <picture class="heading-img">
@@ -18,10 +17,13 @@
 
 
     <div class="content">
-      <MarkDown :data="presenter.props.contents"/>
+      <ShareButton :class="{ 'shrink':shrink}" :path="pagePath" :title="presenter.props.title"/>
+      <div class="content-wrap">
+        <MarkDown :data="presenter.props.contents"/>
+        <TagList :tags="presenter.props.tags"/>
+      </div>
     </div>
 
-    <TagList :tags="presenter.props.tags"/>
 
   </div>
 </template>
@@ -30,10 +32,12 @@
 import Vue from 'vue'
 import {PostEntity} from "@/types/Post";
 import {ContentfulRepository} from "@/repository/contentful";
+import { scroll } from "@/lib/scroller";
 const MarkDown = () => import('@/components/Post/MarkDown.vue')
 const Date = () => import('@/components/Post/Date.vue')
 const TagList = () => import('@/components/Post/TagList.vue')
 const ShareButton = () => import('@/components/Post/ShareButtons.vue')
+
 
 
 export default Vue.extend({
@@ -44,6 +48,12 @@ export default Vue.extend({
         Date,
         TagList
     },
+    data() {
+        return  {
+          shrink : false
+        }
+
+    },
     computed:{
         presenter() :PostEntity | null {
             return new ContentfulRepository(this.$store).getCurrentPost()
@@ -53,10 +63,25 @@ export default Vue.extend({
             return basePath + this.$route.fullPath
         }
     },
+    mounted() {
+        if (window) {
+            window.addEventListener('scroll', this.scrollEvent)
+        }
+    },
+    methods: {
+        scrollEvent() {
+            const test = scroll(document.scrollingElement,850)
+            if (test)  {
+                this.shrink = true
+            } else {
+                this.shrink =  false
+            }
+        }
+    },
     head() {
         const post = (this as any).presenter.props
         return {
-            title: `${post? post.title : ''} | kuma-blog`,
+            title: `${post? post.title : ''} | kumamo-n`,
             meta: [
                 { hid: 'description', name: 'description', content: post ? post.content : '' },
                 { hid: 'og:type', property: 'og:type', content: 'article' },
@@ -93,9 +118,15 @@ export default Vue.extend({
     margin:20px 0;
     color: #202124;
   }
-  .content {
+  .shrink {
+    transform: translate(0%);
+    opacity: 1;
+  }
+  .content-wrap {
     line-height: 1.6rem;
     letter-spacing: 0.08rem;
+    max-width: 800px;
+    margin:auto;
   }
   .post-head {
     display: flex;
@@ -106,6 +137,9 @@ export default Vue.extend({
   @media screen and (max-width: 1024px) {
     .article {
       max-width: 90%;
+    }
+    .shrink {
+      opacity: 0;
     }
   }
 
@@ -122,7 +156,10 @@ export default Vue.extend({
       margin: 20px 0;
     }
     .post-head {
-      margin: 30px 0;
+      margin: 20px 0;
+    }
+    .shrink {
+      opacity: 0;
     }
 
   }

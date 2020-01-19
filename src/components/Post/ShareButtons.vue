@@ -7,14 +7,9 @@
         <use xlink:href="/hatena.svg#root" />
       </svg>
     </a>
-    <a :href="`http://twitter.com/share?url=${this.path}&text=${this.title}`"  target="_blank" rel="noopener">
+    <a :href="`http://twitter.com/share?url=${this.path}&text=${this.title}`"  target="_blank" >
       <svg width="20px" height="40px"viewBox="0 0 20 16">
         <use xlink:href="/twitter.svg#root" />
-      </svg>
-    </a>
-    <a :href="`http://getpocket.com/edit?url=${this.path}`"  target="_blank" rel="noopener">
-      <svg width="20px" height="40px" viewBox="0 0 20 16">
-        <use xlink:href="/pocket.svg#root" />
       </svg>
     </a>
   </div>
@@ -35,3 +30,18 @@ export default Vue.extend({
   }
 })
 </script>
+<style lang="scss">
+  .share_buttons {
+    position: sticky;
+    top: 150px;
+    display: flex;
+    flex-direction: column;
+    height:0;
+    z-index: 99;
+    transition: opacity 200ms;
+    opacity: 0;
+  }
+  .share_buttons a:first-child {
+    padding-bottom: 20px;
+  }
+</style>
