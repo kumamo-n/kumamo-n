@@ -9,11 +9,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 import { scroll } from "@/lib/scroller";
-const Header = () => import('../containers/Header')
-const Footer = () => import('../containers/Footer')
+const Header = () => import('@/containers/Header.vue')
+const Footer = () => import('@/containers/Footer.vue')
 export default Vue.extend({
   components: {
     Footer,
@@ -31,8 +31,8 @@ export default Vue.extend({
   },
   methods: {
     scrollEvent() {
-      const test = scroll(document.scrollingElement,700)
-      if (test)  {
+      const scrollEvent = scroll(document.scrollingElement,700)
+      if (scrollEvent)  {
         this.headerHide = false
       } else {
         this.headerHide = true

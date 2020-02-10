@@ -17,7 +17,7 @@
 
 
     <div class="content">
-      <ShareButton :class="{ 'shrink':shrink}" :path="pagePath" :title="presenter.props.title"/>
+      <ShareButton :class="{ 'shrink':side}" :path="pagePath" :title="presenter.props.title"/>
       <div class="content-wrap">
         <MarkDown :data="presenter.props.contents"/>
         <TagList :tags="presenter.props.tags"/>
@@ -32,13 +32,11 @@
 import Vue from 'vue'
 import {PostEntity} from "@/types/Post";
 import {ContentfulRepository} from "@/repository/contentful";
-import { scroll } from "@/lib/scroller";
+import {scroll} from "@/lib/scroller";
 const MarkDown = () => import('@/components/Post/MarkDown.vue')
 const Date = () => import('@/components/Post/Date.vue')
 const TagList = () => import('@/components/Post/TagList.vue')
 const ShareButton = () => import('@/components/Post/ShareButtons.vue')
-
-
 
 export default Vue.extend({
     name: "Post",
@@ -47,12 +45,6 @@ export default Vue.extend({
         MarkDown,
         Date,
         TagList
-    },
-    data() {
-        return  {
-          shrink : false
-        }
-
     },
     computed:{
         presenter() :PostEntity | null {
@@ -63,18 +55,23 @@ export default Vue.extend({
             return basePath + this.$route.fullPath
         }
     },
+    data() {
+        return  {
+          side: false
+        }
+    },
     mounted() {
         if (window) {
-            window.addEventListener('scroll', this.scrollEvent)
+            window.addEventListener('scroll', (this as any).scrollEvent)
         }
     },
     methods: {
         scrollEvent() {
-            const test = scroll(document.scrollingElement,850)
-            if (test)  {
-                this.shrink = true
+            const scrollEvent = scroll(document.scrollingElement,850)
+            if (scrollEvent)  {
+                (this as any).side = true
             } else {
-                this.shrink =  false
+                (this as any).side =  false
             }
         }
     },

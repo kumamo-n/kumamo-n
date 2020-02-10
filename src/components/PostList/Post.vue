@@ -56,6 +56,7 @@ export default Vue.extend({
 
   .thumb-wrap {
     position:relative;
+    overflow: hidden;
   img {
     width:100%;
     top:50%;
@@ -67,9 +68,7 @@ export default Vue.extend({
   .thumb-wrap:before {
     content:"";
     display:block;
-    padding-top:55%;
-    width: 100%;
-    height: 0;
+    padding-top:60%;
   }
 
   .post-body {

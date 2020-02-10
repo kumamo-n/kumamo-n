@@ -46,6 +46,10 @@ export default Vue.extend({
             line-height: 40px;
             font-size: 1.2rem;
         }
+        img {
+            display: block;
+            width: 100%;
+        }
         ul {
             color: #202124;
             list-style:disc;
