@@ -10,10 +10,13 @@
       <Date :date="presenter.props.publishedAt ? presenter.props.publishedAt: ''"/>
     </div>
 
-    <picture class="heading-img">
-      <source :srcset="presenter.props.webp.fields.file.url" type="image/webp" />
-      <img :src="presenter.props.image.fields.file.url" :alt="presenter.props.image.fields.file.fileName">
-    </picture>
+
+   <div class="heading-inner">
+     <picture class="heading-img">
+       <source :srcset="presenter.props.webp.fields.file.url" type="image/webp" />
+       <img :src="presenter.props.image.fields.file.url" :alt="presenter.props.image.fields.file.fileName">
+     </picture>
+   </div>
 
 
     <div class="content">
@@ -100,11 +103,18 @@ export default Vue.extend({
   }
 
   .heading-img {
-    width:100%;
     margin: 40px 0;
     img {
       width:100%;
     }
+  }
+  .heading-inner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 24px;
   }
 
   .heading {
