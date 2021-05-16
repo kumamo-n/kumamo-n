@@ -30,7 +30,7 @@
     "dayjs": "^1.8.17",
     "husky": "^6.0.0",
     "marked": "^0.7.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "nuxt": "^2.0.0",
     "prismjs": "^1.17.1",
     "sass-loader": "^8.0.0",
