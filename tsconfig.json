@@ -14,11 +14,12 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": [
-      "@types/node",
-      "@nuxt/types"
-    ]
+    "types": ["@types/node", "@nuxt/types"]
   },
-  "include": ["src/**/*.ts", "src/**/*.vue", "src/types/*.d.ts",",test/**/*.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "src/types/*.d.ts",
+    ",test/**/*.ts"
+  ]
 }
-

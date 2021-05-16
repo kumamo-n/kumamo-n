@@ -1,52 +1,51 @@
 <template>
   <div id="app">
-    <Header  :class="{ 'shrink':!headerHide}"  />
-    {{this.headerHide}}
+    <Header :class="{ shrink: !headerHide }" />
+    {{ this.headerHide }}
     <main id="wrap">
       <nuxt />
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue";
 import { scroll } from "@/lib/scroller";
-const Header = () => import('@/containers/Header.vue')
-const Footer = () => import('@/containers/Footer.vue')
+const Header = () => import("@/containers/Header.vue");
+const Footer = () => import("@/containers/Footer.vue");
 export default Vue.extend({
   components: {
     Footer,
-    Header
+    Header,
   },
   data() {
     return {
-      headerHide: true
-    }
+      headerHide: true,
+    };
   },
   mounted() {
     if (window) {
-      window.addEventListener('scroll', this.scrollEvent)
+      window.addEventListener("scroll", this.scrollEvent);
     }
   },
   methods: {
     scrollEvent() {
-      const scrollEvent = scroll(document.scrollingElement,700)
-      if (scrollEvent)  {
-        this.headerHide = false
+      const scrollEvent = scroll(document.scrollingElement, 700);
+      if (scrollEvent) {
+        this.headerHide = false;
       } else {
-        this.headerHide = true
+        this.headerHide = true;
       }
-    }
+    },
   },
-})
+});
 </script>
-
 
 <style lang="scss">
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -92,15 +91,15 @@ html {
   background-color: #35495e;
 }
 
-  #wrap {
-    margin-top:140px ;
-  }
-  .shrink {
-    transform: translateY(-100%);
-  }
+#wrap {
+  margin-top: 140px;
+}
+.shrink {
+  transform: translateY(-100%);
+}
 @media screen and (max-width: 768px) {
   #wrap {
-    margin-top:100px ;
+    margin-top: 100px;
   }
 }
 </style>

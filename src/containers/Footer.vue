@@ -6,24 +6,23 @@
   </div>
 </template>
 <script>
-import Vue from 'vue'
+import Vue from "vue";
 export default Vue.extend({
-  name: "Footer"
-})
+  name: "Footer",
+});
 </script>
 
 <style scoped lang="scss">
-  .footer {
-    height: 400px;
+.footer {
+  height: 400px;
+  width: 100%;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
+  .footer-wrap {
     width: 100%;
-    background:#f8f9fa ;
-    display: flex;
-    align-items: center;
-    margin-top: 100px;
-    .footer-wrap {
-      width: 100%;
-      text-align: center;
-    }
+    text-align: center;
   }
-
+}
 </style>
